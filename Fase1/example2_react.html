@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- No usar en producción: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>Hola Mundo</title>
+  </head>
+  <body>
+    <div id="cuerpo"></div> <!-- LA WEB SE RENDERIZARÁ ACÁ -->
+
+    <!-- Se debe configurar el script como módulo con Babel -->
+    <script type="text/babel" data-type="module" src="app.jsx"></script>
+    
+    <!--
+    Para probar archivos con import/export o data-type="module" 
+    en el navegador localmente, necesitarás abrir el archivo 
+    a través de un servidor local sencillo como la extensión 
+    "Live Server" de VS Code, ya que los navegadores bloquean peticiones de módulos locales bajo el protocolo file://
+    -->
+
+  </body>
+</html>

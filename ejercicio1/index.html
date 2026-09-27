@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leer desde BBDD</title>
+
+  <!-- React, ReactDOM y Babel desde CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- Tailwind CSS desde CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans p-5">
+
+  <div id="root"></div>
+
+  <!-- Archivo JS con los datos -->
+  <script src="./js/posts.js"></script>
+
+  <!-- Código de React con clases Tailwind -->
+  <script type="text/babel">
+    function PostCard({ post }) {
+      return (
+        <div className="bg-[#1f2a38] text-white rounded-md w-[300px] p-3 shadow-lg flex flex-col box-border">
+          <img 
+            src={post.image} 
+            alt={post.title} 
+            className="w-full h-[180px] object-cover rounded bg-black" 
+          />
+          <h2 className="text-[1.15rem] font-bold mt-3.5 mb-2.5 leading-snug">
+            {post.title}
+          </h2>
+          <p className="text-[0.82rem] text-[#d0d7de] mb-3 leading-relaxed">
+            {post.description}
+          </p>
+          <p className="text-[0.82rem] text-[#a3b1c2] mb-4 leading-relaxed flex-grow line-clamp-3">
+            {post.content}
+          </p>
+          <span className="text-[0.8rem] text-[#c9d1d9]">
+            {post.created_at}
+          </span>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <h1 className="text-center font-normal text-2xl mb-7">
+            Kitten's Gallery
+          </h1>
+          <div className="flex flex-wrap justify-center gap-5 max-w-[1200px] mx-auto">
+            {postsData.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

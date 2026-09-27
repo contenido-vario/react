@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/estilos.css">
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/x-icon">
+  <title>React | Componentes</title>
+</head>
+
+<body>
+  <main>
+  <h1 class="font-bold text-2xl text-red-700 mb-4">Componentes en React</h1>
+  
+  <h2>Paso 1: El Frontend HTML puro</h2>
+  <h3> (Sin lógica de React)</h3>
+  <p>Nuestro primer objetivo es construir únicamente la <b>interfaz visual estática</b>. Todavía no le agregaremos estado, ni funciones para añadir ni eliminar tareas, pero renderizaremos el <b>HTML</b>  mediante <b>JSX</b> dentro del <code>&lt;div id="cuerpo"&gt;</code>.</p>
+
+  <p>Este paso nos servirá para entender cómo <b>JSX</b> permite crear <b>HTML</b> usando el DOM.</p>
+
+  <p><em>Prueba el código del <b>paso 1</b> y revisa bien el código.</em></p>
+
+  <p>En el Paso 2 modularizaremos en Componentes.</p>
+  
+  <details><summary>Código del Paso 1 (<code>index.html</code>)</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso1.html"></script>
+  </details>
+
+  <h3>Conceptos clave del paso 1:</h3>
+
+  <ol>
+    <li><b>Atributos HTML en JSX</b>: En <code>JSX</code> no se utiliza la palabra usamos <code>class="..."</code> sino <code>className="..."</code>.<br>Esto se debe a que <code>JSX</code> es <b>JavaScript</b>, y <code>class</code> es una palabra reservada del lenguaje JavaScript (para definir clases).</li>
+    
+    <li><b>Etiquetas auto-cerradas:</b> En <code>JSX</code>, las etiquetas como <code>&lt;input&gt;</code> o <code>&lt;br&gt;</code>, deben cerrarse obligatoriamente con una barra: <code>&lt;input /&gt;</code>, <code>&lt;br /&gt;</code>.</li>
+    
+    <li><b>Monolito:</b> Todo el bloque de la aplicación vive dentro de una sola función (<code>App</code>). En Paso 2, romperemos esta estructura para crear componentes reutilizables.
+    </li>
+  </ol>
+
+  </main>
+</body>
+</html>

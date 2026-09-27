@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/estilos.css">
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/x-icon">
+  <title>React Intro</title>
+</head>
+
+<body>
+  <main>
+    <h1>Introducción a React</h1>
+    <h2>¿Qué es React?</h2>
+
+    <p><b>React</b> es una biblioteca de JavaScript desarrollada por Facebook (ahora Meta) en 2013 que permite construir interfaces de usuario basadas en componentes. Su función principal es automatizar la sincronización entre los datos de la aplicación (el estado que cambia con la interacción del usuario) y lo que se renderiza en la pantalla (el HTML).</p>
+
+    <p>Es importante aclarar que React se define como una <b>biblioteca</b> (librería), no como un <b>framework</b>:</p>
+    <ul>
+      <li><b>Una biblioteca</b>, brinda herramientas específicas para resolver problemas concretos (en este caso, construir interfaces)</li>
+      <li><b>Un framework,</b> Te exige una estructura completa con reglas estrictas sobre cómo organizar tu código en carpetas.</li>
+    </ul>
+
+    <p><b>React</b> mantiene una copia de la página en memoria (Virtual DOM) para re-renderizar partes del HTML en tiempo real cada vez que el estado cambia, sin necesidad de recargar nada.</p>
+  
+    <h3>El Concepto Central de React es: "Funciones que devuelven HTML"</h3>
+    
+    <p>En estas primeras clases usaremos <b>React</b> desde el CDN. Luego, aprenderemos a empaquetar un proyecto de <b>React</b> usando Node.js y Vite y por último usaremos componentes de <b>React dentro de Astro (islas)</b>.</p>
+
+    <h2>Usar React mediante CDN</h2>
+    
+    <p>Para utilizar React usando el CDN, se crea un archivo <code>.html</code> y se incluyen los scripts de <b>React, ReactDOM y Babel</b>.</p>
+
+    <ul>
+      <li><b>React</b> es la biblioteca principal con la lógica de componentes</li>
+      <li><b>ReactDOM</b> es el encargado de renderizar React en el navegador</li>
+      <li><b>Babel</b> es un traductor (transpilador) de JavaScript que transforma las funciones de React (JSX) a código que el navegador entiende.</li>
+    </ul>
+    
+    <h3>Mi primer programa usando React</h3>
+
+    <p>Copia y pega el siguiente programa en tu ordenador:</p>
+
+    <details><summary>Mi primer programa en React (<code>index.html</code>)</summary>
+      <script src="https://gist.github.com/contenido-vario/a85f4f32cb4d5a311e6632042e096e83.js?file=index.html"></script>
+    </details>
+
+    <p>Como se puede apreciar <b>React</b> envía una (o varias) funciones de JavaScript (JSX) que se ejecutan directamente en el navegador del usuario y van "dibujando" y modificando el HTML en tiempo real.</p>
+
+    <p>Para separar el HTML del código de React:</p>
+
+   <details><summary>Mi primer programa en React (HTML)</summary>
+      <script src="https://gist.github.com/contenido-vario/a85f4f32cb4d5a311e6632042e096e83.js?file=index2.html"></script>
+   </details>
+
+   <h4>IMPORTANTE</h4>
+   <ul>
+    <li>
+      Se debe configurar el script como módulo con Babel<br>
+      <code>&lt;script <mark>type="text/babel"</mark> data-type="module" src="app.jsx"&gt;&lt;/script&gt;</code>
+    </li>
+    <li>
+      Para probar archivos con <code>import/export</code> o <code>data-type="module"</code> localmente en el navegador,  se necesita necesita abrir el archivo a través de un servidor local sencillo (<em>como la extensión "Live Server" de VS Code</em>), ya que los navegadores bloquean peticiones de módulos locales bajo el protocolo <code>file://</code></li>
+   </ul>
+
+   <details><summary>Mi primer programa en React (JSX)</summary>
+      <script src="https://gist.github.com/contenido-vario/a85f4f32cb4d5a311e6632042e096e83.js?file=app.jsx"></script>
+   </details>
+
+   <hr>
+
+   <p>Para ir estudiando todos los temas de <b>React</b>, haremos una aplicación <b>to-do list</b> paulatinamente, a la que iremos agregando poco a poco instrucciones que permitirán comprender paso a paso cómo maneja React los componentes, la jerarquización de componentes, las props, los estados, compartir estados, y las puertas de escape.</p>
+
+   <p>Inicialmente la haremos utilizando el CDN, luego la haremos independientemente, y por último la haremos en <b>Astro + React</b> para agregar persistencia.</p>
+   
+  </main>
+</body>
+</html>

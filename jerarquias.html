@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/estilos.css">
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/x-icon">
+  <title>React | Jerarquías</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <main>
+    <h1 class="font-bold text-2xl text-red-700 mb-4">Jerarquías de Componentes</h1>
+    <h2>Paso 2: Modularizar en Componentes</h2>
+
+    <p>En este segundo paso romperemos el bloque monolítico de la función <code>App</code> para crear <b>componentes independientes y reutilizables</b>.</p>
+
+    <p><mark>Un <b>componente en React</b> no es más que una función de JavaScript que retorna elementos de <code>JSX</code> y cuyo nombre <u>siempre debe empezar con mayúscula inicial</u> (por ejemplo: <code>TodoForm</code> en lugar de <code>todoForm</code>).</mark></p>
+
+    <details><summary>Código del Paso 2 (<code>index.html</code>)</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso2.html"></script>
+    </details>
+
+    <h3>Conceptos clave del paso 2:</h3>
+
+    <ol>
+      <li><b>Jerarquía de componentes</b>: Ahora <code>App</code> actúa como componente "Padre", el cual renderiza dentro a <code>Header</code>, <code>TodoForm</code> y <code>TodoList</code>. A su vez, <code>TodoList</code> es el Padre de múltiples componentes <code>TodoItem</code> (sus "Hijos").</li>
+
+      <li><b>Mayúsculas obligatorias</b>: Si nombras a un componente <code>function todoItem()</code>, React pensará que es una etiqueta nativa de HTML como <code>&lt;div&gt;</code> o <code>&lt;p&gt;</code> y dará un error. La inicial mayúscula (Upper CamelCase al nombrar <code>TodoItem</code>) es obligatoria.</li>
+      
+      <li><b>¿Hasta dónde hemos llegado?</b>: Al ejecutar <code>index.html</code>  las 3 tareas tienen exactamente el mismo contenido. Esto sucede porque <code>TodoItem</code> tiene un texto literal (en informática, se llama <code>hardcoded</code> cuando se dejan fijos, textos que deberían ser dinámicos.). En el siguiente paso resolveremos esto usando <b>Props</b> para pasarle datos dinámicos a cada componente.</li>
+    </ol>
+
+  </main>
+</body>
+</html>

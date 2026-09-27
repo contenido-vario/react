@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/estilos.css">
+
+  <link rel="shortcut icon" href="./img/rt.ico" type="image/x-icon">
+  <title>React | Props</title>
+</head>
+
+<body class="container mx-auto w-5/6 pb-10">
+  <main>
+    <h1 class="font-bold text-2xl text-red-700 mb-4"> Paso de propiedades: Props</h1>
+
+    <h2>Paso 3: Enviar Props a los Componentes</h2>
+
+    <p>En este tercer paso eliminaremos el texto duplicado del paso anterior usando <code>Props</code> (propiedades).</p>
+
+    <p>Las <code>Props</code> (abreviatura de <em>properties</em>) son el mecanismo que utilizan <code>React</code> y otros frameworks como por ejemplo <code>Svelte</code> y <code>Vue</code>, para pasar información <em>desde un componente Padre hacia un componente Hijo</em> (en una sola dirección).<br>Funcionan como los argumentos de una función: permiten que los componentes sean reutilizables y dinámicos.</p>
+
+    <p>Una regla fundamental en <code>React</code> es que las <code>props</code> son de solo lectura (inmutables). Un componente hijo nunca debe modificar las props que recibe; solo las lee y las renderiza.</p>
+
+    <section><h3>1. Pasar y recibir <code>props</code></h3>
+      
+      <p>Para pasar una <code>prop</code>, se añade como si fuera un atributo HTML en el componente padre. En el componente hijo, ésta se recibes como un objeto en los parámetros de la función.</p>
+
+      <details><summary>Pasar y recibir props. Ejemplo.</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=PadreHijo.jsx"></script>
+      </details>
+    </section>
+
+    <section><h3>2. Desestructurar <code>props</code></h3>
+
+      <p>La práctica recomendada es desestructurar las <code>props</code> directamente en los argumentos de la función, en vez de escribir <code>props.nombre</code> constantemente (caso del ejemplo anterior) </p>
+
+      <details><summary>Desestructurar props. Ejemplo.</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=Desestructurar.jsx"></script>
+      </details>
+    </section>
+
+    <section><h3>3. Tipos de datos que se pueden pasar mediante <code>props</code></h3>
+
+      <p>Se pueden pasar cualquier tipo de dato de JavaScript mediante llaves <b><code>{ }</code></b>. Ejemplo:</p>
+
+      <details><summary>Pasar props. Ejemplo.</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=PasarProps.jsx"></script>
+      </details>
+    </section>
+    
+    <section>  <h3>4. Valores por defecto</h3>
+
+      <p>La forma de asignar valores por defecto, en caso de que el padre no pase una prop específica, es la siguiente:</p>
+
+      <details><summary>Valores por defecto. Ejemplo.</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=Valores.jsx"></script>
+      </details>
+    </section>
+
+    <section> <h3>5. Una <code>prop</code> especial: <code>children</code></h3>
+
+      <p>Las prop <code>children</code>  <b>no se pasan como un atributo normal</b> (como por ejemplo <code>nombre="María"</code>), sino metiendo contenido dentro de las etiquetas del componente.</p>
+      
+      <h4>5.1 Ejemplo paso a paso</h4>
+
+      <p>Imaginemos que queremos crear un componente llamado <code>Caja</code> que le ponga un borde bonito a cualquier cosa que se meta dentro.</p>
+
+      <!-- <h5>a. Definimos el componente <code>Caja</code></h5> -->
+
+      <details><summary>a. Definimos el componente <code>Caja</code></summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=Caja.jsx"></script>
+      </details>
+
+      <!-- <h5>b. Usamos <code>Caja</code> con diferentes contenidos</h5> -->
+
+      <details><summary>b. Usamos <code>Caja</code> con diferentes contenidos</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=UsarCaja.jsx"></script>
+      </details>
+
+      <p>(Ahora, podemos usar <code>Caja</code> como si fuera un contenedor o "envoltorio")</p>
+
+      <p>Los <code>children</code> Sirve para crear **componentes reutilizables que funcionan como contenedores o plantillas**, sin importar qué tipo de contenido vayan a llevar dentro.</p>
+
+      <h4>5.2 ¿Ya conoces Astro? Comparativa:</h4>
+
+      <p>Si ya conoces <b>Astro</b>, <mark>las <code>children</code> son como los <code>Layouts</code> de <b>Astro</b></mark>.<br>La prop <code>children</code> de <b>React</b> hace exactamente el mismo trabajo que el elemento <code>&lt;slot /&gt;</code> en <b>Astro</b>.</p>
+
+      <p>La idea es idéntica, solo cambia la sintaxis de cómo se le indica al marco dónde renderizar ese contenido:</p>
+
+      <h5>En Astro (usando <code>&lt;slot /&gt;</code>)</h5>
+
+      <details><summary>MiLayout.astro</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=MiLayout.astro"></script>
+      </details>
+
+      <p>No se necesita declarar nada en el <em>script</em>, simplemente se coloca la etiqueta <code>&lt;slot /&gt;</code> donde se desea insertar el contenido.</p>
+
+      <hr>
+
+      <h5>En React (usando <code>{children}</code>) </h5>
+
+      <p>En <b>React</b> se tiene que recibir <code>children</code> como una <b>prop</b> dentro de los argumentos de la función y colocar <code>{children}</code> entre llaves en el JSX.</p>
+
+      <details><summary>MiLayout.jsx</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=MiLayout.astro"></script>
+      </details>
+
+    </section>
+
+    <h2>Código del paso 3</h2>
+
+    <p>Ahora que ya tenemos un poco más clara la teoría de cómo usar las <code>props</code> en <b>React</b>, acá tenemos el código para eliminar el texto duplicado del paso 2, utilizando <code>props</code>.</p>
+
+    <details><summary>Código del Paso 3 (<code>index.html</code>)</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso3.html"></script>
+    </details>
+
+    <h3>Conceptos clave del paso 3:</h3>
+
+    <ol>
+      <li><b>Las expresiones JavaScript van entre llaves <code>{ }</code></b>: Dentro de JSX, cualquier valor que pongas dentro de llaves <code>{ }</code> <b>se evalúa como JavaScript</b>. Por eso escribimos <code>{titulo}</code> o <code>{tarea.texto}</code>.</li>
+      <li><b>Desestructuración de argumentos:</b> En vez de escribir <code>function Header(props)</code> y luego utilizar <code>props.titulo</code>, la sintaxis limpia moderna es desestructurar directamente: <code>function Header({ titulo })</code>.</li>
+      <li> <b>El método <b>.map()</b> y la prop <b>key</b>:</b> Para renderizar una lista dinámica en <b>React</b> se transforma el array usando <b>.map()</b>. Además, <b>React</b> exige pasar una prop <code>key</code> única a cada elemento de la lista (<code>key={tarea.id}</code>) para identificar cuáles ítems cambian, se añaden o se eliminan eficientemente.</li>
+    </ol>
+
+  </main>
+</body>
+</html>

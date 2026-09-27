@@ -1,0 +1,136 @@
+:root {
+  --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #ff4500;
+}
+
+/* Estilos globales (Base) */
+
+body {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.5;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+section {
+  padding-left: 2rem;
+}
+
+
+p {
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+h1 { color: darkred;}
+h2 { color: teal; }
+h3 { color:darkblue;}
+h4 { color:teal; font-size: 1rem;}
+h5 { color:darkred; font-size: 0.9rem;}
+
+button {
+  border-radius: 0.375rem; /* rounded-md */
+  background-color: #e2e8f0; /* bg-slate-200 */
+  border: 1px solid #94a3b8; /* border-1 border-slate-400 */
+  padding: 0.25rem 1rem; /* py-1 px-4 */
+  margin-top: 0.25rem; /* my-1 */
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem; /* text-sm */
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5; /* disabled:opacity-50 */
+}
+
+details {
+  margin-bottom: 1rem; /* mb-4 */
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px dotted #eee; 
+  color: #1e293b; /* text-slate-800 */
+}
+
+summary {
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem;
+  font-size: 0.9rem; /* text-base */
+  background-color: #f1f5f9; /* bg-slate-100 */
+  font-weight: 700; /* font-bold */
+}
+
+blockquote {
+  margin-left: 2rem; /* mx-8 */
+  margin-right: 2rem;
+  padding: 0.5rem; /* p-2 */
+  background-color: #e2e8f0; /* bg-slate-200 */
+}
+
+ol, ul {
+  margin-left: 1.5rem; /* ml-6 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+ul {
+  list-style-type: circle; /* list-[circle] */
+  list-style-position: outside; /* list-outside */
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+kbd, a {
+  color: #1e40af; /* text-blue-800 */
+}
+
+code {
+  color: blue;
+  background-color: #eee;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 7%;
+  font-size: 0.85rem;
+}
+
+a {
+  border-bottom: 1px solid currentColor; 
+  /* border-b-1 (se asigna el mismo color del texto) */
+}
+
+input, select {
+  border: 1px solid #ccc; /* border-1 (asigna un borde gris genérico por defecto) */
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem;
+}
+
+hr {
+  margin-top: 0.75rem; /* my-3 */
+  margin-bottom: 0.75rem;
+  border: dotted 0.5px #ddd;
+}
+
+.card {
+  background-color: black;
+  color: #ffffff;
+  border-radius: 6px;
+  width: 30%;
+  padding: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -5,7 +5,7 @@ const postsData = [
     description: "¿Qué es la valeriana? ¿Qué efecto tiene la valeriana en los gatos? De qué forma se puede utilizar la valeriana? En qué se diferencian la valeriana y la hierba gatera?",
     content: "La valeriana tiene diferentes efectos en los gatos. Algunos se frotan la cabeza con devoción con cualquier cosa que contenga valeriana y luego se revolcan eufóricamente o se tambalean como si estuvieran borrachos. Otros recorren el paisaje residencial como si los hubieran detenido. ¡Da la impresión de que están en un 'subidón de valeriana'! Pero también hay gatos que no se sienten atraídos por el olor de la hierba para gatos durante el resto de sus vidas: especialmente a los gatos mayores y jóvenes no les impresiona la valeriana. Para gatos mayores probablemente se deba a que el sentido del olfato disminuye con la edad.",
     created_at: "1/2/2024",
-    image: "/img/gato1.png"
+    image: "./img/gato1.png"
   },
   {
     id: 2,

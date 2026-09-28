@@ -17,7 +17,70 @@
 
 <body>
   <main>
-  <h1>Puertas de Escape</h1>
+  <h1>Las Puertas de Escape</h1>
+  <h2>Paso 7: <code>useEffect</code> y <code>useRef</code></h2>
+
+  <p>La regla de oro de React, es que los componentes deben ser "puros" y por lo tanto, se debe renderizar la interfaz basándose solo en estados y props. Sin embargo, a veces es necesario usar <em>hooks</em> para salir del flujo de React y conectarnos con el mundo exterior (en nuestro caso, usaremos <code>localStorage</code> ). A esto se le conoce como <b>Puertas de Escape</b> (<em>Escape Hatches</em>).</p>
+
+  <p>📍Utilizaremos dos hooks para esto:</p>
+  <ol>
+    <li><code><b>useRef</b></code>: Nos da acceso directo al nodo nativo del DOM para poner el foco en el input automáticamente al agregar una tarea.</li>
+    <li><code><b>useEffect</b></code>: Sincroniza el estado de React con una API externa del navegador (<code>localStorage</code>), haciendo que las tareas se guarden y no se borren al recargar la página.</li>
+  </ol>
+
+  <blockquote>
+    <small>
+      <p>En el contexto informático, hook (traducible como "gancho") es un punto de inserción en el flujo de ejecución de un programa donde puedes inyectar tu propio código para modificar o extender su comportamiento, sin alterar el código original.</p> 
+
+      <p>La idea es que el sistema "te deja colgarte" (hook into) en momentos específicos: antes o después de una operación, cuando ocurre un evento, etc.</p>
+    </small>
+  </blockquote>
+
+  <details><summary>Código del Paso 7 (<code>index.html</code>)</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso7.html"></script>
+  </details>
+
+  <h3>Una vez listo el programa, llega el momento de modularizar: separar los componentes, en archivos <code>.jsx</code></h3>
+
+  <h4>Estructura de archivos de la carpeta:</h4>
+
+  <blockquote><pre>
+  /mi-proyecto
+  ├── index.html
+  ├── App.jsx
+  └── components/
+      ├── Header.jsx
+      ├── TodoForm.jsx
+      ├── TodoList.jsx
+      └── TodoItem.jsx</pre></blockquote>
+
+  <details><summary>1. components/Header.jsx</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=Header.jsx"></script>
+  </details>
+
+  <details><summary>2. components/TodoForm.jsx</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=TodoForm.jsx"></script>
+  </details>
+
+  <details><summary>3. components/TodoList.jsx</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=TodoList.jsx"></script>
+  </details>
+
+  <details><summary>4. components/TodoItem.jsx</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=TodoItem.jsx"></script>
+  </details>
+  
+  <details><summary>5. components/App.jsx</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=App.jsx"></script>
+  </details>
+
+  <h4>Enlazado</h4>
+
+  <p>📍<mark><b>Muy Importante</b></mark>: Para utilizar <code>import</code> y <code>export</code> en el navegador vía Babel CDN, se debe agregar el atributo <code>data-type="module"</code> junto a <code>type="text/babel"</code>:</p>
+
+  <details><summary>6. index.html</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=index7.html"></script>
+  </details>
 
   </main>
 </body>

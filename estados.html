@@ -17,8 +17,31 @@
 
 <body>
   <main>
-  <h1>Estados en React</h1>
+    <h1>Estados en React</h1>
+    <h2>Paso 5: Manejar los Estados con <code>useState</code></h2>
 
+    <p>En este quinto paso le daremos <b>memoria y reactividad local</b> a nuestros componentes utilizando <code>useState</code>.</p>
+
+    <p>Hasta el paso 4, las variables comunes de JavaScript no lograban actualizar la pantalla porque React no se enteraba de los cambios. 📍 Con <code>useState</code>, le pedimos a React que mantenga un valor y <b>vuelva a renderizar la interfaz automáticamente</b> cada vez que ese valor cambie.</p>
+
+    <details><summary>Código del Paso 5 (<code>index.html</code>)</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso5.html"></script>
+    </details>
+
+    <h3>Conceptos clave del Paso 5:</h3>
+
+    <ol>
+      <li><b>La tupla de <code>useState</code>:</b> <code>const [valor, setValor] = useState(inicial)</code>. El primer elemento es la variable de lectura; el segundo es la función que se usa para <b>modificar</b> ese valor.</li>
+
+      <li><b>Componentes Controlados:</b> Al poner <code>value={texto}</code> y <code>onChange={(e) => setTexto(e.target.value)}</code>, el valor del <code>&lt;input&gt;</code> pasa a estar 100% bajo el control de React.</li>
+
+      <li><b>Aislamiento de estado:</b> Si se ejecuta el código del paso 5 en el navegador y se hace clic en la primera tarea, se puede apreciar que solo esa tarea cambia a <b>Completada</b>. Cada instancia de <code>TodoItem</code> guarda su propio estado de forma totalmente independiente.</li>
+
+      <li><b>La limitación actual:</b> Si se escribe un nuevo texto en <code>TodoForm</code> y se clica sobre <b>Añadir</b>, <em>no es posible agregarlo a la lista</em>. Esto sucede porque el estado del input vive dentro de <code>TodoForm</code> y la lista de tareas vive dentro de <code>TodoList</code>, con lo cual no tienen forma de comunicarse directamente.</li>
+
+    </ol>
+      
+    <p>Para resolver esto pasaremos al Paso 6: <b>Compartir Estados (Lifting State Up)</b>.</p>
   </main>
 </body>
 </html>

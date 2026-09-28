@@ -17,8 +17,31 @@
 
 <body>
   <main>
-  <h1>Compartir Estados</h1>
+    <h1>Compartir Estados</h1>
+    <h2>Paso 6: Compartir Estados (Lifting State Up)</h2>
+    
+    <p>En este sexto paso resolveremos el aislamiento del paso anterior elevando el estado al <b>componente Padre</b>, que es común al resto de componentes (el componente <code>App</code>).</p>
 
+    <p>En React, los datos fluyen en una sola dirección (de arriba a abajo). Si el formulario (<code>TodoForm</code>) necesita añadir elementos a la lista (<code>TodoList</code>), <mark>el estado de la lista debe vivir en <code>App</code></mark>.</p>
+    
+    <p>Luego, <code>App</code> le pasa a sus hijos tanto los datos como las funciones <em>callback</em>, poder modificar ese estado mediante <b>Props</b>.</p>
+
+    <blockquote>
+      📍<small>Un callback <em>es una función que se pasa como argumento a otra función</em> para que se ejecute más tarde, generalmente cuando se complete una tarea o se produzca un evento.</small>
+    </blockquote>
+
+    <details><summary>Código del Paso 6 (<code>index.html</code>)</summary>
+      <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso6.html"></script>
+    </details>
+
+    <h3>Conceptos clave del Paso 6:</h3>
+
+    <ol>
+      <li><b>Pasar callbacks por Props:</b> Un componente Hijo no puede modificar directamente el estado de su Padre. La solución es que el Padre le pase una función (ejemplo: <code>onAgregarTarea</code>) para que el Hijo la invoque cuando ocurra un evento.</li>
+      <li><b>Inmutabilidad en React</b>: En React, debemos tratar el estado como <em>leíble pero no modificable directamente</em>. Nunca se ejecuta <code>tareas.push(nueva)</code> directamente.  Para actualizar las tareas, se crea un nuevo array usando el operador spread: <code>setTareas([nueva, ...tareas])</code>.</li>
+      <li><b>Puntos débiles a resolver:</b> Si se prueba agregar varias tareas y luego se recarga la página (<code><b>F5</b></code>), <b>todas las tareas nuevas se pierden</b>. Además, al agregar una tarea hay que hacer <em>clic</em> manualmente en el <code>input</code> para volver a escribir.</li>
+    </ol>
+    <p>Para solucionar la persistencia en FrontEnd y la manipulación del DOM, usaremos las <b>Puertas de Escape</b> en el Paso 7.</p>
   </main>
 </body>
 </html>

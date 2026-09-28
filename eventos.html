@@ -17,7 +17,26 @@
 
 <body>
   <main>
-  <h1>Eventos en React</h1>
+    <h1>Eventos en React</h1>
+    <h2>Paso 4: Agregar los Eventos</h2>
+
+    <p>En este cuarto paso transformaremos nuestra interfaz de pasiva a reactiva: algo que <b>reacciona a las acciones del usuario</b>.</p>
+
+    <p>En HTML tradicional sr utilizan atributos como <code>onclick="..."</code> o <code>onsubmit="..."</code> en minúsculas. En <b>React/JSX</b>, los eventos usan la convención <b>camelCase</b> (<code>onClick</code>, <code>onSubmit</code>, <code>onChange</code>) y en lugar de un texto con código, <mark>reciben directamente una función de JavaScript</mark>.</p>
+
+    <details><summary>Código del Paso 4 (<code>index.html</code>)</summary>
+    <script src="https://gist.github.com/contenido-vario/d4bdf8e18fc02cb71c38bc3e0ece85a1.js?file=paso4.html"></script>
+    </details>
+
+    <h3>Conceptos clave del Paso 4</h3>
+
+    <ol>
+      <li><b>Paso de referencias</b>: Las funciones que los eventos deben ejecutar, se asignan directamente a las funciones pero sin invocarlas: 🆗 <code><b>onSubmit={handleSubmit}</b></code> en lugar de ❌<code class="tachado-rojo">onSubmit={handleSubmit()}</code> (lo cual es <u>incorrecto</u> porque se ejecutaría inmediatamente al renderizar).</li>
+      <li><b>Synthetic Events</b>: El objeto <code>e</code> que recibe la función manejadora (como <code>e.preventDefault()</code>) es un objeto envuelto por React llamado <b>SyntheticEvent</b>, el cual funciona exactamente igual en todos los navegadores.</li>
+      <li><b>El paso que falta...</b>: Si se escribes en el <code>input</code> o se hace clic en <b>Eliminar</b>, se podrán ver los mensajes en la consola y las alertas, pero la pantalla no cambia (no se agregan ni se borran tareas realmente). Esto se debe a que <b>React</b> no sabe que la interfaz debe volver a dibujarse.<br></li>
+    </ol>
+    <p>Para solucionar esto se necesita manejar el <b>Estado</b>: en el paso 5.</p>
+
 
   </main>
 </body>

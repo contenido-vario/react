@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Paso 6: Compartir Estado</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center">
+
+  <div id="cuerpo" class="w-full max-w-md p-6 bg-slate-800 rounded-2xl shadow-xl"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Header({ titulo }) {
+      return (
+        <h1 className="text-2xl font-bold mb-6 text-center text-indigo-400">
+          {titulo}
+        </h1>
+      );
+    }
+
+    // Recibe una FUNCIÓN vía Props enviada desde el Padre
+    function TodoForm({ onAgregarTarea }) {
+      const [texto, setTexto] = useState('');
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!texto.trim()) return;
+        
+        // Invocamos la función del Padre enviando el nuevo texto
+        onAgregarTarea(texto);
+        setTexto(''); // Limpiamos el campo
+      };
+
+      return (
+        <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+          <input
+            type="text"
+            value={texto}
+            onChange={(e) => setTexto(e.target.value)}
+            placeholder="Escribe una tarea real y presiona Enter..."
+            className="flex-1 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 focus:outline-none"
+          />
+          <button type="submit" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 font-medium rounded-lg">
+            Añadir
+          </button>
+        </form>
+      );
+    }
+
+    // Recibe la tarea y las funciones de acción vía Props
+    function TodoItem({ tarea, onToggle, onEliminar }) {
+      return (
+        <li className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg border border-slate-700">
+          <span 
+            onClick={() => onToggle(tarea.id)}
+            className={`cursor-pointer flex-1 select-none ${tarea.completado ? 'line-through text-slate-400' : ''}`}
+          >
+            {tarea.texto}
+          </span>
+          <button 
+            onClick={() => onEliminar(tarea.id)}
+            className="text-red-400 hover:text-red-300 px-2 font-bold"
+          >
+            ✕
+          </button>
+        </li>
+      );
+    }
+
+    function TodoList({ tareas, onToggle, onEliminar }) {
+      if (tareas.length === 0) {
+        return <p className="text-center text-slate-400 py-4">No hay tareas en la lista.</p>;
+      }
+
+      return (
+        <ul className="space-y-2">
+          {tareas.map((tarea) => (
+            <TodoItem 
+              key={tarea.id} 
+              tarea={tarea} 
+              onToggle={onToggle}
+              onEliminar={onEliminar}
+            />
+          ))}
+        </ul>
+      );
+    }
+
+    // COMPONENTE PADRE: Administra el Estado Global de las tareas
+    function App() {
+      const [tareas, setTareas] = useState([
+        { id: 1, texto: 'Elevar el estado al Padre (App)', completado: true },
+        { id: 2, texto: 'Probar agregar una nueva tarea', completado: false }
+      ]);
+
+      // 1. Lógica para agregar
+      const agregarTarea = (texto) => {
+        const nueva = { id: Date.now(), texto, completado: false };
+        setTareas([nueva, ...tareas]); // Principio de Inmutabilidad (creamos un nuevo array)
+      };
+
+      // 2. Lógica para alternar completado
+      const toggleTarea = (id) => {
+        setTareas(tareas.map(t => t.id === id ? { ...t, completado: !t.completado } : t));
+      };
+
+      // 3. Lógica para eliminar
+      const eliminarTarea = (id) => {
+        setTareas(tareas.filter(t => t.id !== id));
+      };
+
+      return (
+        <div>
+          <Header titulo="Paso 6: Estado Compartido" />
+          <TodoForm onAgregarTarea={agregarTarea} />
+          <TodoList 
+            tareas={tareas} 
+            onToggle={toggleTarea} 
+            onEliminar={eliminarTarea} 
+          />
+        </div>
+      );
+    }
+
+    const container = document.getElementById('cuerpo');
+    const cuerpo = ReactDOM.createRoot(container);
+    cuerpo.render(<App />);
+
+  </script>
+</body>
+</html>

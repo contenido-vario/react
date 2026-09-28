@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Paso 5: Manejo de Estados</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center">
+
+  <div id="cuerpo" class="w-full max-w-md p-6 bg-slate-800 rounded-2xl shadow-xl"></div>
+
+  <script type="text/babel">
+    // Extraemos useState del objeto global de React
+    const { useState } = React;
+
+    function Header({ titulo }) {
+      return (
+        <h1 className="text-2xl font-bold mb-6 text-center text-indigo-400">
+          {titulo}
+        </h1>
+      );
+    }
+
+    // El formulario maneja su propio estado local para la caja de texto
+    function TodoForm() {
+      // Estado para guardar la entrada de texto del usuario
+      const [texto, setTexto] = useState('');
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        alert(`Estado guardado en el input: "${texto}"`);
+        setTexto(''); // Limpiamos el campo reiniciando el estado
+      };
+
+      return (
+        <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+          <input
+            type="text"
+            value={texto} // El input muestra el valor actual del estado (Componente Controlado)
+            onChange={(e) => setTexto(e.target.value)} // Actualiza el estado al escribir
+            placeholder="Escribe para probar la reactividad..."
+            className="flex-1 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 focus:outline-none"
+          />
+          <button type="submit" className="px-4 py-2 bg-indigo-600 font-medium rounded-lg">
+            Ver Estado
+          </button>
+        </form>
+      );
+    }
+
+    // Componente con su propio estado interno para marcar completado/incompletado
+    function TodoItem({ tareaInicial }) {
+      // Estado local para saber si esta tarea específica está completada
+      const [completado, setCompletado] = useState(tareaInicial.completado);
+
+      const toggleCompletado = () => {
+        setCompletado(!completado); // Invierte el valor booleano
+      };
+
+      return (
+        <li 
+          onClick={toggleCompletado}
+          className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg border border-slate-700 cursor-pointer select-none"
+        >
+          <span className={completado ? "line-through text-slate-400" : ""}>
+            {tareaInicial.texto}
+          </span>
+          <span className="text-xs bg-slate-800 px-2 py-1 rounded text-slate-400">
+            {completado ? "Completada" : "Pendiente"}
+          </span>
+        </li>
+      );
+    }
+
+    function TodoList() {
+      // Lista de datos estática para este paso
+      const tareasPrueba = [
+        { id: 1, texto: 'Aprender la sintaxis de useState', completado: false },
+        { id: 2, texto: 'Haz clic en cualquier tarea para alternar su estado', completado: false }
+      ];
+
+      return (
+        <ul className="space-y-2">
+          {tareasPrueba.map((tarea) => (
+            <TodoItem key={tarea.id} tareaInicial={tarea} />
+          ))}
+        </ul>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <Header titulo="Paso 5: Hook useState" />
+          <TodoForm />
+          <TodoList />
+        </div>
+      );
+    }
+
+    const container = document.getElementById('cuerpo');
+    const cuerpo = ReactDOM.createRoot(container);
+    cuerpo.render(<App />);
+
+  </script>
+</body>
+</html>
